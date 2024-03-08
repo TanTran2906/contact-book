@@ -6,6 +6,10 @@ class MongoDB {
             return this.client;
         }
         this.client = await MongoClient.connect(uri);
+
+        // Tạo bảng 'contacts' nếu nó không tồn tại
+        await this.client.db().createCollection('contacts');
+
         return this.client;
     };
 }
